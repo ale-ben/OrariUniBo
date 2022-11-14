@@ -4,6 +4,8 @@ from datetime import datetime, timedelta
 from icalendar import Calendar, Event
 import requests
 from populate_lesson_json import populate_lessons
+import pytz
+import uuid
 
 def get_timetable_for_class(lesson, year, delta_days=14):
 	timetable = Calendar()
@@ -23,6 +25,8 @@ def get_timetable_for_class(lesson, year, delta_days=14):
 	for lesson_event in timetable_response.json():
 		event = Event()
 		event.add('summary', lesson_event['title'])
+		event.add('uid', uuid.uuid4())
+		event.add('dtstamp', datetime.now().astimezone(pytz.UTC))
 		event.add('dtstart', datetime.strptime(lesson_event['start'], "%Y-%m-%dT%H:%M:%S"))
 		event.add('dtend', datetime.strptime(lesson_event['end'], "%Y-%m-%dT%H:%M:%S"))
 		event.add('location', lesson_event['aule'][0]['des_indirizzo'])
@@ -73,10 +77,10 @@ def main():
 		if timetable is not None:
 			save_timetable_for_class(timetable)
 
-	for lesson_code in year_2:
-		timetable = get_timetable_for_class(year_2[lesson_code], "2")
-		if timetable is not None:
-			save_timetable_for_class(timetable)
+	#for lesson_code in year_2:
+	#	timetable = get_timetable_for_class(year_2[lesson_code], "2")
+	#	if timetable is not None:
+	#		save_timetable_for_class(timetable)
 
 if __name__ == "__main__":
 	main()
