@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-import requests
+import requests, uuid
 
 
 def getCurricula():
@@ -36,7 +36,8 @@ def getClassesForYear(curricula, year):
 					'docente': classJson['docente'],
 					'crediti': classJson['cfu'],
 					'cod_modulo': classJson['cod_modulo'],
-					'curriculum': key
+					'curriculum': key,
+					'uuid': f"{uuid.uuid4()}"
 				}
 	return classes
 
