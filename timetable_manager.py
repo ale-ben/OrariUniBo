@@ -9,8 +9,11 @@ import uuid
 
 def get_timetable_for_class(lesson, year, delta_days=14):
 	timetable = Calendar()
+	timetable.add('calscale','GREGORIAN')
 	timetable.add('name', f'{lesson["title"]} - {lesson["cod_modulo"]}')
 	timetable.add('X-WR-CALNAME', f'{lesson["title"]} - {lesson["cod_modulo"]}')
+	timetable.add('X-WR-TIMEZONE','Europe/Rome')
+	timetable.add('REFRESH-INTERVAL;VALUE=DURATION', 'P1D')
 	timetable.add('uid', uuid.uuid4())
 	timetable.add('last-modified', datetime.now().astimezone(pytz.UTC))
 	timetable.add('prodid', '-//Unibo Timetable//Timetable Manager//')
