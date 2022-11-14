@@ -74,16 +74,16 @@ def populate_lessons():
 	with open(Path.cwd().joinpath("README.md"), "w") as readme:
 		readme.write('# OrariUniBo\n\n')
 		readme.write('## Year 1\n')
-		for key in classes1:
-			file_url = sanitize_path(f"{classes1[key]['title']}-{classes1[key]['cod_modulo']}")
+		for lesson in sorted(classes1.items(), key=lambda item: item[1]['title']):
+			file_url = sanitize_path(f"{lesson[1]['title']}-{lesson[1]['cod_modulo']}")
 			file_url = f"{base_git_url}year_1/{file_url}.ics"
-			readme.write(f"- {classes1[key]['title']} ({classes1[key]['cod_modulo']}) [link]({file_url})\n")
+			readme.write(f"- {lesson[1]['title']} ({lesson[1]['cod_modulo']}) [link]({file_url})\n")
 
 		readme.write('\n## Year 2\n')
-		for key in classes2:
-			file_url = sanitize_path(f"{classes2[key]['title']}-{classes2[key]['cod_modulo']}")
+		for lesson in sorted(classes2.items(), key=lambda item: item[1]['title']):
+			file_url = sanitize_path(f"{lesson[1]['title']}-{lesson[1]['cod_modulo']}")
 			file_url = f"{base_git_url}year_2/{file_url}.ics"
-			readme.write(f"- {classes2[key]['title']} ({classes2[key]['cod_modulo']}) [link]({file_url})\n")
+			readme.write(f"- {lesson[1]['title']} ({lesson[1]['cod_modulo']}) [link]({file_url})\n")
 
 if __name__ == '__main__':
 	populate_lessons()
