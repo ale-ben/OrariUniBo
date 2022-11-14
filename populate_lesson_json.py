@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+from custom_utils import sanitize_path
 import requests, uuid
 
 
@@ -43,6 +44,7 @@ def getClassesForYear(curricula, year):
 	return classes
 
 def populate_lessons():
+	base_git_url = "https://raw.githubusercontent.com/ale-ben/OrariUniBo/master/out/"
 	directory = Path.cwd().joinpath('out')
 
 	if not directory.exists():
@@ -55,22 +57,33 @@ def populate_lessons():
 	with open(directory.joinpath("curricula.json"), "w") as outfile:
 		outfile.write(json_object)
 
-	classes = getClassesForYear(curricula, "2")
-	print(classes)
+	classes1 = getClassesForYear(curricula, "1")
+	print(classes1)
 
-	classes = getClassesForYear(curricula, "1")
-	print(classes)
-
-	json_object = json.dumps(classes, indent=None, separators=(',', ':'))
+	json_object = json.dumps(classes1, indent=None, separators=(',', ':'))
 	with open(directory.joinpath("year_1.json"), "w") as outfile:
 		outfile.write(json_object)
 
-	classes = getClassesForYear(curricula, "2")
-	print(classes)
+	classes2 = getClassesForYear(curricula, "2")
+	print(classes2)
 
-	json_object = json.dumps(classes, indent=None, separators=(',', ':'))
+	json_object = json.dumps(classes2, indent=None, separators=(',', ':'))
 	with open(directory.joinpath("year_2.json"), "w") as outfile:
 		outfile.write(json_object)
+
+	with open(Path.cwd().joinpath("README.md"), "w") as readme:
+		readme.write('# OrariUniBo\n\n')
+		readme.write('## Year 1\n')
+		for key in classes1:
+			file_url = sanitize_path(f"{classes1[key]['title']}-{classes1[key]['cod_modulo']}")
+			file_url = f"{base_git_url}year_1/{file_url}.ics"
+			readme.write(f"- {classes1[key]['title']} ({classes1[key]['cod_modulo']}) [link]({file_url})\n")
+
+		readme.write('\n## Year 2\n')
+		for key in classes2:
+			file_url = sanitize_path(f"{classes2[key]['title']}-{classes2[key]['cod_modulo']}")
+			file_url = f"{base_git_url}year_2/{file_url}.ics"
+			readme.write(f"- {classes2[key]['title']} ({classes2[key]['cod_modulo']}) [link]({file_url})\n")
 
 if __name__ == '__main__':
 	populate_lessons()
