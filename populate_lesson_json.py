@@ -40,7 +40,7 @@ def getClassesForYear(curricula, year):
 				}
 	return classes
 
-def main():
+def populate_lessons():
 	directory = Path.cwd().joinpath('out')
 
 	if not directory.exists():
@@ -71,4 +71,4 @@ def main():
 		outfile.write(json_object)
 
 if __name__ == '__main__':
-	main()
+	populate_lessons()

@@ -3,6 +3,7 @@ from pathlib import Path
 from datetime import datetime, timedelta
 from icalendar import Calendar, Event
 import requests
+from populate_lesson_json import populate_lessons
 
 def get_timetable_for_class(lesson, year, delta_days=14):
 	timetable = Calendar()
@@ -56,6 +57,8 @@ def save_timetable_for_class(timetable_dict):
 def main():
 	
 	directory = Path.cwd().joinpath('out')
+	if not directory.exists():
+		populate_lessons()
 
 	year_1 = {}
 	with open(directory.joinpath("year_1.json"),'r') as f:
