@@ -1,7 +1,4 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
-name: Python package
+name: Refresh lesson JSON
 
 on:
   push:
@@ -28,13 +25,13 @@ jobs:
       with:
         path: out
         key: timetable-out
-    - name: Generate timetable
+    - name: Generate JSON
       run: |
-        python timetable_manager.py
+        python populate_lesson_json.py
     - name: Commit calendars
       run: |
         git config --global user.name 'Alessandro Benetton - Actions'
         git config --global user.email 'aleben98@gmail.com'
-        git add -f out/*
-        git commit -am "Update iCal files"
+        git add -f out/* README.md
+        git commit -am "Update lesson JSON list"
         git push
