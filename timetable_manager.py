@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from icalendar import Calendar, Event
 import requests
 from populate_lesson_json import populate_lessons
+from custom_utils import sanitize_path
 import pytz
 import uuid
 
@@ -41,17 +42,6 @@ def get_timetable_for_class(lesson, year, delta_days=14):
 		timetable.add_component(event)
 
 	return {'title': lesson['title'], 'class_code': lesson['cod_modulo'], 'year': year, 'timetable': timetable}
-
-def sanitize_path(in_path):
-	path = in_path.replace(" ", "_")
-	path = path.replace("/", "-")
-	path = path.replace("\\", "-")
-	path = path.replace(":", "-")
-	path = path.replace("\n", "-")
-	path = path.replace("-_-", "-")
-	path = path.replace("_-_", "-")
-
-	return path
 
 def save_timetable_for_class(timetable_dict):
 	# Write to disk
