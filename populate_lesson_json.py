@@ -13,6 +13,7 @@ def getCurricula():
 def getClassesForYear(curricula, year):
 
 	classes = {}
+	print("[INFO] Populating classes JSON")
 
 	start_date = datetime.now()
 	if start_date.month >= 8:

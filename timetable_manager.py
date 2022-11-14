@@ -85,10 +85,10 @@ def main():
 		if timetable is not None:
 			save_timetable_for_class(timetable)
 
-	#for lesson_code in year_2:
-	#	timetable = get_timetable_for_class(year_2[lesson_code], "2")
-	#	if timetable is not None:
-	#		save_timetable_for_class(timetable)
+	for lesson_code in year_2:
+		timetable = get_timetable_for_class(year_2[lesson_code], "2")
+		if timetable is not None:
+			save_timetable_for_class(timetable)
 
 if __name__ == "__main__":
 	main()
