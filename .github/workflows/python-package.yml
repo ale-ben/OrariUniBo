@@ -17,7 +17,7 @@ jobs:
     - name: Set up Python 3.9
       uses: actions/setup-python@v4
       with:
-        ython-version: '3.9'
+        python-version: '3.9'
         cache: 'pip' # caching pip dependencies
     - name: Install dependencies
       run: |
