@@ -105,6 +105,22 @@ def main():
     if not directory.exists():
         populate_lessons()
 
+    # Clear output folder
+    if directory.joinpath("year_1").exists():
+        print("Clearing output folder for year 1...")
+        pth = directory.joinpath("year_1")
+        for child in pth.glob("*"):
+            if child.is_file():
+                child.unlink()
+
+    # Clear output folder
+    if directory.joinpath("year_2").exists():
+        print("Clearing output folder for year 2...")
+        pth = directory.joinpath("year_2")
+        for child in pth.glob("*"):
+            if child.is_file():
+                child.unlink()
+
     year_1 = {}
     with open(directory.joinpath("year_1.json"), "r") as f:
         year_1 = json.load(f)
