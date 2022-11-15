@@ -60,15 +60,15 @@ def get_timetable_for_class(lesson, year, delta_days=14):
         event.add("dtstamp", datetime.now().astimezone(pytz.UTC))
         event.add(
             "dtstart",
-            datetime.strptime(lesson_event["start"], "%Y-%m-%dT%H:%M:%S")
-            .replace(tzinfo=timezone)
-            .astimezone(pytz.UTC),
+            timezone.localize(
+                datetime.strptime(lesson_event["start"], "%Y-%m-%dT%H:%M:%S")
+            ).astimezone(pytz.UTC),
         )
         event.add(
             "dtend",
-            datetime.strptime(lesson_event["end"], "%Y-%m-%dT%H:%M:%S")
-            .replace(tzinfo=timezone)
-            .astimezone(pytz.UTC),
+            timezone.localize(
+                datetime.strptime(lesson_event["end"], "%Y-%m-%dT%H:%M:%S")
+            ).astimezone(pytz.UTC),
         )
         event.add("location", lesson_event["aule"][0]["des_indirizzo"])
         event.add(
