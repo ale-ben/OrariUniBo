@@ -3,6 +3,9 @@ name: Refresh lesson JSON
 on:
   schedule:
   - cron: "0 0 1 * *"
+  push:
+    paths:
+      - '**.py'
 
 jobs:
   build:
