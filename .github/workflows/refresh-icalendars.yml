@@ -3,6 +3,9 @@ name: Refresh iCalendars
 on:
   schedule:
   - cron: "0 1 * * *"
+  push:
+    paths:
+    - 'timetable_manager.py'
 
 jobs:
   build:
