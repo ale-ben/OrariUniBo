@@ -5,7 +5,7 @@ on:
   - cron: "0 0 1 * *"
   push:
     paths:
-      - '**.py'
+      - 'populate_lesson_json.py'
 
 jobs:
   build:
