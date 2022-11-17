@@ -2,7 +2,7 @@ name: Refresh iCalendars
 
 on:
   schedule:
-  - cron: "0 1 * * *"
+  - cron: "0 1 * * 0"
   push:
     paths:
     - 'timetable_manager.py'
