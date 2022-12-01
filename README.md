@@ -17,7 +17,6 @@
 - CYBERSECURITY (93470) [link](https://raw.githubusercontent.com/ale-ben/OrariUniBo/master/out/year_2/CYBERSECURITY-93470.ics)
 - DATA ANALYTICS / (1) Modulo 1 (90733_1) [link](https://raw.githubusercontent.com/ale-ben/OrariUniBo/master/out/year_2/DATA_ANALYTICS-(1)_Modulo_1-90733_1.ics)
 - DATA ANALYTICS / (2) Modulo 2 (90733_2) [link](https://raw.githubusercontent.com/ale-ben/OrariUniBo/master/out/year_2/DATA_ANALYTICS-(2)_Modulo_2-90733_2.ics)
-- DISTRIBUTED SOFTWARE SYSTEMS (93468) [link](https://raw.githubusercontent.com/ale-ben/OrariUniBo/master/out/year_2/DISTRIBUTED_SOFTWARE_SYSTEMS-93468.ics)
 - LABORATORIO DI REALTA' VIRTUALE E REALTA' AUMENTATA (91721) [link](https://raw.githubusercontent.com/ale-ben/OrariUniBo/master/out/year_2/LABORATORIO_DI_REALTA'_VIRTUALE_E_REALTA'_AUMENTATA-91721.ics)
 - MACHINE LEARNING (81610) [link](https://raw.githubusercontent.com/ale-ben/OrariUniBo/master/out/year_2/MACHINE_LEARNING-81610.ics)
 - SCALABLE AND CLOUD PROGRAMMING (81942) [link](https://raw.githubusercontent.com/ale-ben/OrariUniBo/master/out/year_2/SCALABLE_AND_CLOUD_PROGRAMMING-81942.ics)
